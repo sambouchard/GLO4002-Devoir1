@@ -7,14 +7,20 @@ public class Clinic {
 
     private LinkedList<String> radiologyWaitingList;
     private LinkedList<String> doctorWaitingLIst;
+    private TriageType triageType;
 
-    public Clinic() {
+    public Clinic(TriageType triageType) {
         setRadiologyWaitingList(new LinkedList<String>());
         setDoctorWaitingLIst(new LinkedList<String>());
+        setTriageType(triageType);
     }
 
     public void triagePatient(String name, int gravity, VisibleSymptom visibleSymptom) {
-        if(gravity == 5){
+        if(this.triageType.equals(TriageType.GRAVITY) && gravity == 7 && visibleSymptom.equals(VisibleSymptom.FLU)){
+            doctorWaitingLIst.addFirst(name);
+            return;
+        }
+        if(visibleSymptom.equals(VisibleSymptom.SPRAIN) || visibleSymptom.equals(VisibleSymptom.BROKEN_BONE) || gravity ==5){
             doctorWaitingLIst.addFirst(name);
         }else{
             this.doctorWaitingLIst.add(name);
@@ -43,6 +49,16 @@ public class Clinic {
     public String getFirstNameInDoctorWaitingList(){
         return this.doctorWaitingLIst.element();
     }
+
+
+    public TriageType getTriageType() {
+        return triageType;
+    }
+
+    public void setTriageType(TriageType triageType) {
+        this.triageType = triageType;
+    }
+
 
 
     // D'autres méthodes peuvent être nécessaires

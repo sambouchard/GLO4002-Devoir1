@@ -1,5 +1,6 @@
 package devoir1;
 
 public enum TriageType {
-    FIFO
+    FIFO,
+    GRAVITY
 }
