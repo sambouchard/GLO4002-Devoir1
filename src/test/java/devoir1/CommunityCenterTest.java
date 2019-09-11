@@ -82,4 +82,26 @@ public class CommunityCenterTest {
         String actualPatientName = testCommunityCenter.getFirstNameInMainWaitingList();
         assertEquals(expectedPatientName,actualPatientName);
     }
+
+    @Test
+    public void given_aPatientWithASymptomOfGravityOne_when_theCommunityCenterHasAGravityTriageType_then_dontAddHimOnTheNurseWaitingList(){
+        CommunityCenter testCommunityCenter = new CommunityCenter(TriageType.GRAVITY);
+        String expectedPatientName = "Yvon Lavalle";
+        int testGravity = 1;
+        VisibleSymptom testVisibleSymptom = VisibleSymptom.BROKEN_BONE;
+        testCommunityCenter.triagePatient(expectedPatientName,testGravity,testVisibleSymptom);
+        boolean containsPatientName = testCommunityCenter.getMainWaitingList().contains(expectedPatientName);
+        assertFalse(containsPatientName);
+    }
+
+    @Test
+    public void given_aPatientWithASymptomOfGravityOne_when_theCommunityCenterHasAFifoTriageType_then_dontAddHimOnTheNurseWaitingList(){
+        CommunityCenter testCommunityCenter = new CommunityCenter(TriageType.FIFO);
+        String expectedPatientName = "Yvon Lavalle";
+        int testGravity = 1;
+        VisibleSymptom testVisibleSymptom = VisibleSymptom.BROKEN_BONE;
+        testCommunityCenter.triagePatient(expectedPatientName,testGravity,testVisibleSymptom);
+        boolean containsPatientName = testCommunityCenter.getMainWaitingList().contains(expectedPatientName);
+        assertFalse(containsPatientName);
+    }
 }

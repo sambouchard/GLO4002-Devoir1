@@ -140,4 +140,52 @@ public class ClinicTest {
         String actualPatientName = testClinic.getFirstNameInMainWaitingList();
         assertEquals(expectedPatientName,actualPatientName);
     }
+
+    @Test
+    public void given_aPatientWithASymptomOfGravityOne_when_theClinicHasAGravityTriageType_then_dontAddHimOnTheDoctorWaitingList(){
+        Clinic testClinic = new Clinic(TriageType.GRAVITY);
+        String expectedPatientName = "Yvon Lavalle";
+        int testGravity = 1;
+        VisibleSymptom testVisibleSymptom = VisibleSymptom.BROKEN_BONE;
+        testClinic.triagePatient(expectedPatientName,testGravity,testVisibleSymptom);
+        boolean containsPatientName = testClinic.getMainWaitingList().contains(expectedPatientName);
+        assertFalse(containsPatientName);
+
+    }
+
+    @Test
+    public void given_aPatientWithASymptomOfGravityOne_when_theClinicHasAFifoTriageType_then_dontAddHimOnTheDoctorWaitingList(){
+        Clinic testClinic = new Clinic(TriageType.FIFO);
+        String expectedPatientName = "Yvon Lavalle";
+        int testGravity = 1;
+        VisibleSymptom testVisibleSymptom = VisibleSymptom.BROKEN_BONE;
+        testClinic.triagePatient(expectedPatientName,testGravity,testVisibleSymptom);
+        boolean containsPatientName = testClinic.getMainWaitingList().contains(expectedPatientName);
+        assertFalse(containsPatientName);
+
+    }
+
+    @Test
+    public void given_aPatientWithASymptomOfGravityOne_when_theClinicHasAGravityTriageType_then_dontAddHimOnTheRadiologyWaitingList(){
+        Clinic testClinic = new Clinic(TriageType.GRAVITY);
+        String expectedPatientName = "Yvon Lavalle";
+        int testGravity = 1;
+        VisibleSymptom testVisibleSymptom = VisibleSymptom.BROKEN_BONE;
+        testClinic.triagePatient(expectedPatientName,testGravity,testVisibleSymptom);
+        boolean containsPatientName = testClinic.getRadiologyWaitingList().contains(expectedPatientName);
+        assertFalse(containsPatientName);
+
+    }
+
+    @Test
+    public void given_aPatientWithASymptomOfGravityOne_when_theClinicHasAFifoTriageType_then_dontAddHimOnTheRadiologyWaitingList(){
+        Clinic testClinic = new Clinic(TriageType.FIFO);
+        String expectedPatientName = "Yvon Lavalle";
+        int testGravity = 1;
+        VisibleSymptom testVisibleSymptom = VisibleSymptom.BROKEN_BONE;
+        testClinic.triagePatient(expectedPatientName,testGravity,testVisibleSymptom);
+        boolean containsPatientName = testClinic.getRadiologyWaitingList().contains(expectedPatientName);
+        assertFalse(containsPatientName);
+
+    }
 }

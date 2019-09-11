@@ -13,6 +13,9 @@ public class CommunityCenter implements HealthCenter {
 
     @Override
     public void triagePatient(String name, int gravity, VisibleSymptom visibleSymptom) {
+        if(gravity == 1){
+            return;
+        }
         if(this.triageType.equals(TriageType.GRAVITY)){
             gravityTriage(name, gravity);
         }
