@@ -117,7 +117,7 @@ public class ClinicTest {
     }
 
     @Test
-    public void given_aClinicWithAGravityTriageTypeAndBothOfTheRadiologyAndDoctorWaitingListWithAPatientInIt_when_aPatientShowsUpWithABrokenBoneOfSeverity7_then_heIsSecondInTheRadiologyWaitingList(){
+    public void given_aClinicWithAGravityTriageTypeAndBothOfTheRadiologyAndDoctorWaitingListWithAPatientInIt_when_aPatientShowsUpWithABrokenBoneOfSeverity7_then_heIsFirstInTheRadiologyWaitingList(){
         Clinic testClinic = new Clinic(TriageType.GRAVITY);
         String expectedPatientName = "Yvon Lavalle";
         String testSecondName = "Manon Grenier";
@@ -125,10 +125,20 @@ public class ClinicTest {
         VisibleSymptom testVisibleSymptom = VisibleSymptom.BROKEN_BONE;
         testClinic.triagePatient(testSecondName,testGravity,testVisibleSymptom);
         testClinic.triagePatient(expectedPatientName,testGravity,testVisibleSymptom);
-        LinkedList<String> actualRadiologyWaitingList = testClinic.getRadiologyWaitingList();
-        String actualSecondPatientName = actualRadiologyWaitingList.get(1);
+        String actualSecondPatientName = testClinic.getFirstNameInRadiologyWaitingLIst();
         assertEquals(expectedPatientName,actualSecondPatientName);
     }
 
+    @Test
+    public void given_aClinicWithAGravityTriageTypeAndBothOfTheRadiologyAndDoctorWaitingListWithAPatientInIt_when_aPatientShowsUpWithABrokenBoneOfSeverity7_then_heIsFirstInTheDoctorWaitingList(){
+        Clinic testClinic = new Clinic(TriageType.GRAVITY);
+        String expectedPatientName = "Yvon Lavalle";
+        String testSecondName = "Manon Grenier";
+        int testGravity = 7;
+        VisibleSymptom testVisibleSymptom = VisibleSymptom.BROKEN_BONE;
+        testClinic.triagePatient(testSecondName,testGravity,testVisibleSymptom);
+        testClinic.triagePatient(expectedPatientName,testGravity,testVisibleSymptom);
+        String actualPatientName = testClinic.getFirstNameInDoctorWaitingList();
+        assertEquals(expectedPatientName,actualPatientName);
+    }
 }
-

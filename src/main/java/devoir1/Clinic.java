@@ -16,11 +16,18 @@ public class Clinic {
     }
 
     public void triagePatient(String name, int gravity, VisibleSymptom visibleSymptom) {
-        if(this.triageType.equals(TriageType.GRAVITY) && gravity == 7 && visibleSymptom.equals(VisibleSymptom.FLU)){
-            doctorWaitingLIst.addFirst(name);
-            return;
+        if(this.triageType.equals(TriageType.GRAVITY)){
+            gravityTriage(name, gravity, visibleSymptom);
         }
-        if(visibleSymptom.equals(VisibleSymptom.SPRAIN) || visibleSymptom.equals(VisibleSymptom.BROKEN_BONE) || gravity ==5){
+        else if(triageType.equals(TriageType.FIFO)){
+            fifoTriage(name, visibleSymptom);
+        }
+
+
+    }
+
+    private void fifoTriage(String name, VisibleSymptom visibleSymptom) {
+        if(visibleSymptom.equals(VisibleSymptom.SPRAIN) || visibleSymptom.equals(VisibleSymptom.BROKEN_BONE) ){
             doctorWaitingLIst.addFirst(name);
         }else{
             this.doctorWaitingLIst.add(name);
@@ -28,8 +35,20 @@ public class Clinic {
         if(visibleSymptom.equals(VisibleSymptom.SPRAIN) || visibleSymptom.equals(VisibleSymptom.BROKEN_BONE)){
             this.radiologyWaitingList.add(name);
         }
-
     }
+
+    private void gravityTriage(String name, int gravity, VisibleSymptom visibleSymptom) {
+        if(gravity > 5){
+            doctorWaitingLIst.addFirst(name);
+        }
+        else{
+            doctorWaitingLIst.add(name);
+        }
+        if(visibleSymptom.equals(VisibleSymptom.SPRAIN) || visibleSymptom.equals(VisibleSymptom.BROKEN_BONE)){
+            radiologyWaitingList.addFirst(name);
+        }
+    }
+
     public LinkedList<String> getRadiologyWaitingList() {
         return radiologyWaitingList;
     }
@@ -49,6 +68,8 @@ public class Clinic {
     public String getFirstNameInDoctorWaitingList(){
         return this.doctorWaitingLIst.element();
     }
+
+    public String getFirstNameInRadiologyWaitingLIst() { return  this.radiologyWaitingList.element(); }
 
 
     public TriageType getTriageType() {
