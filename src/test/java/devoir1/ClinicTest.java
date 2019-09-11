@@ -3,9 +3,7 @@ package devoir1;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.LinkedList;
-
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ClinicTest {
 
@@ -16,7 +14,7 @@ public class ClinicTest {
         int testGravity = 2;
         VisibleSymptom testMigraine = VisibleSymptom.MIGRAINE;
         testClinic.triagePatient(expectedName,testGravity,testMigraine);
-        String actualName = testClinic.getFirstNameInDoctorWaitingList();
+        String actualName = testClinic.getFirstNameInMainWaitingList();
         assertEquals(expectedName,actualName);
     }
 
@@ -27,7 +25,8 @@ public class ClinicTest {
         int testGravity = 2;
         VisibleSymptom testMigraine = VisibleSymptom.MIGRAINE;
         testClinic.triagePatient(testName,testGravity,testMigraine);
-        assertFalse(testClinic.getRadiologyWaitingList().contains(testName));
+        boolean radiologyWaitingListContainsName = testClinic.getRadiologyWaitingList().contains(testName);
+        assertFalse(radiologyWaitingListContainsName);
     }
 
     @Test
@@ -39,7 +38,7 @@ public class ClinicTest {
         VisibleSymptom testFlu = VisibleSymptom.FLU;
         testClinic.triagePatient(testFirstName,testGravity,testFlu);
         testClinic.triagePatient(expectedSecondName,testGravity,testFlu);
-        String actualName = testClinic.getDoctorWaitingList().get(1);
+        String actualName = testClinic.getMainWaitingList().get(1);
         assertEquals(expectedSecondName,actualName);
     }
 
@@ -86,7 +85,7 @@ public class ClinicTest {
         VisibleSymptom testVisibleSymptom = VisibleSymptom.SPRAIN;
         testClinic.triagePatient(testSecondName,testGravity,testVisibleSymptom);
         testClinic.triagePatient(expectedPatientName,testGravity,testVisibleSymptom);
-        String actualPatientName = testClinic.getFirstNameInDoctorWaitingList();
+        String actualPatientName = testClinic.getFirstNameInMainWaitingList();
         assertEquals(expectedPatientName,actualPatientName);
     }
 
@@ -99,7 +98,7 @@ public class ClinicTest {
         VisibleSymptom testVisibleSymptom = VisibleSymptom.BROKEN_BONE;
         testClinic.triagePatient(testSecondName,testGravity,testVisibleSymptom);
         testClinic.triagePatient(expectedPatientName,testGravity,testVisibleSymptom);
-        String actualPatientName = testClinic.getFirstNameInDoctorWaitingList();
+        String actualPatientName = testClinic.getFirstNameInMainWaitingList();
         assertEquals(expectedPatientName,actualPatientName);
     }
 
@@ -112,7 +111,7 @@ public class ClinicTest {
         VisibleSymptom testVisibleSymptom = VisibleSymptom.FLU;
         testClinic.triagePatient(testSecondName,testGravity,testVisibleSymptom);
         testClinic.triagePatient(expectedPatientName,testGravity,testVisibleSymptom);
-        String actualPatientName = testClinic.getFirstNameInDoctorWaitingList();
+        String actualPatientName = testClinic.getFirstNameInMainWaitingList();
         assertEquals(expectedPatientName,actualPatientName);
     }
 
@@ -138,7 +137,7 @@ public class ClinicTest {
         VisibleSymptom testVisibleSymptom = VisibleSymptom.BROKEN_BONE;
         testClinic.triagePatient(testSecondName,testGravity,testVisibleSymptom);
         testClinic.triagePatient(expectedPatientName,testGravity,testVisibleSymptom);
-        String actualPatientName = testClinic.getFirstNameInDoctorWaitingList();
+        String actualPatientName = testClinic.getFirstNameInMainWaitingList();
         assertEquals(expectedPatientName,actualPatientName);
     }
 }

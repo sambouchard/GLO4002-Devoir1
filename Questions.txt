@@ -1,3 +1,10 @@
-Question Etape 3: 
+Question Etape 3: 49 lignes(ajoutées/modifiées), j'ai dû faire du refactoring et ajouter un test pour l'étape d'avant.Mais si je n'avais pas eu à faire ça, j'aurais probablement seulement dû modifier un seul test (celui pu le patient est deuxième dans la liste de radiologie pour qu'il test maintenant s'il est premier) et quelques lignes dans la méthode de triage.
+
+Question etape 4: Environ 200 lignes de codes. Ce grand nombre est dû au fait que j'ai extrait une interface de la classe clinique pour faire en sorte que le contre communautaire soit une implémentation de cet interface. J'ai aussi réeutilisé les mêmes tests que pour Clinic(en changeant les instances de Clinic Pour Community Center dans les tests) pour tester la nouvelle classe. Il y a donc moins de méthode dans la nouvelle classe(pas de radiologyWaitingList donc pas de setter/getter/getFirstElement). La classe Clinic possède, selon moi, 2 comportements mais possède 12 tests, ce qui est 6x plus de test que de comportment. Mes tests sont basés sur les scénarios donnés dans l'énoncé donc peut-être que j'en ai trop mis. Il serait intéressant de faire un refactoring des tests plus tard dans le code.
+
+ 
+
+
+
 
 

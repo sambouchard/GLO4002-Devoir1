@@ -3,7 +3,7 @@ package devoir1;
 import java.util.LinkedList;
 
 
-public class Clinic {
+public class Clinic implements HealthCenter {
 
     private LinkedList<String> radiologyWaitingList;
     private LinkedList<String> doctorWaitingLIst;
@@ -11,10 +11,11 @@ public class Clinic {
 
     public Clinic(TriageType triageType) {
         setRadiologyWaitingList(new LinkedList<String>());
-        setDoctorWaitingLIst(new LinkedList<String>());
+        setMainWaitingList(new LinkedList<String>());
         setTriageType(triageType);
     }
 
+    @Override
     public void triagePatient(String name, int gravity, VisibleSymptom visibleSymptom) {
         if(this.triageType.equals(TriageType.GRAVITY)){
             gravityTriage(name, gravity, visibleSymptom);
@@ -57,25 +58,30 @@ public class Clinic {
         this.radiologyWaitingList = radiologyWaitingList;
     }
 
-    public LinkedList<String> getDoctorWaitingList() {
+    @Override
+    public LinkedList<String> getMainWaitingList() {
         return this.doctorWaitingLIst;
     }
 
-    public void setDoctorWaitingLIst(LinkedList<String> doctorWaitingLIst){
+    @Override
+    public void setMainWaitingList(LinkedList<String> doctorWaitingLIst){
         this.doctorWaitingLIst = doctorWaitingLIst;
     }
 
-    public String getFirstNameInDoctorWaitingList(){
+    @Override
+    public String getFirstNameInMainWaitingList(){
         return this.doctorWaitingLIst.element();
     }
 
     public String getFirstNameInRadiologyWaitingLIst() { return  this.radiologyWaitingList.element(); }
 
 
+    @Override
     public TriageType getTriageType() {
         return triageType;
     }
 
+    @Override
     public void setTriageType(TriageType triageType) {
         this.triageType = triageType;
     }
