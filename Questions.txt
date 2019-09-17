@@ -5,6 +5,8 @@ Question Étape 4: Environ 200 lignes de codes. Ce grand nombre est dû au fait 
 Question Étape 5: 288 lignes de tests environ vs 196 lignes de production. Selon moi, mes tests pourraient être un peu moins long(réutiliser certaine structure pour des groupes de test sans la déclarer au début de chaque test unitaire) mais je pense que ma couverture de code et le code lui même sont assez solide. J'ai essayer le plus possible d'utiliser le TDD lors de ce travail mais je ne suis pas encore 100% à l'aise avec cette discipline. Je crois tout de même que le fait d'avoir plus de lignes de tests que de ligne de code de production n'est pas nécéraiment une mauvaise chose, au contraire, cela peut être un signe que l'écriture des tests nous a simplifiés la vie et empêcher d'écrire du code de production inutile.
  
 
+Question Devoir 2 Étape 3: La classe CommunityCenter comporte un seul test car elle ne comporte qu'un seul comportement, tout les autres comportements qu'elle avait avant ont été relégués à d'autre classes, réduisant ainsi le couplage et le nombre de test par classe.
+
 
 
 
